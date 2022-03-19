@@ -25,7 +25,7 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         address payable retailer;
         address payable consumer;
         address payable Current_owner;
-        uint state;
+        State state;
         string grade;
     }
 
@@ -33,11 +33,26 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
     mapping (uint => bool) existing;
 
     modifier harvested(uint _id){
-        require(product_list[_id].state == 0, "Saffron is not harvested");
+        require(product_list[_id].state == State.Harvested, "Saffron is not harvested");
+        _;
+    }
+    
+    modifier dried(uint _id){
+        require(product_list[_id].state == State.Dried, "Saffron is not dried");
+        _;
+    }
+    
+    modifier graded(uint _id){
+        require(product_list[_id].state == State.Graded, "Saffron is not graded");
         _;
     }
 
-     modifier exist(uint _id){
+    modifier packed(uint _id){
+        require(product_list[_id].state == State.Packed, "Saffron is not packed");
+        _;
+    }
+
+    modifier exist(uint _id){
         require(existing[_id] == true, "Product doesn't exist");
         _;
     }
@@ -56,20 +71,50 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         product.distributor = payable(address(0));
         product.retailer = product.distributor;
         product.consumer = product.distributor;
-        product.state = 0;
+        product.state = State.Harvested;
         product_list[_id] = product;
         existing[_id] = true;
     }
 
-    function dry_product(uint _id) exist(_id) harvested(_id) confirm_farmer(_id) public view {
-        require(product_list[_id].farmer == msg.sender, "Not authorized");
-        require(product_list[_id].state == 0, "Saffron is not harvested");
-        Product memory product = product_list[_id];
-        product.state = 1;
+    function dry_product(uint _id) exist(_id) harvested(_id) confirm_farmer(_id) public{
+        product_list[_id].state = State.Dried;
     }
 
-    function grading(uint _id) public{
-        require(existing[_id], "P");
+    function grading(uint _id) exist(_id) dried(_id) confirm_farmer(_id) public{
+        if(product_list[_id].safranal_content >= 80 && product_list[_id].safranal_content <=100)
+        {
+            product_list[_id].grade = "A";
+            product_list[_id].price = 100;
+        }
+        else if(product_list[_id].safranal_content >= 60 && product_list[_id].safranal_content <80)
+        {
+            product_list[_id].grade = "B";
+            product_list[_id].price = 80;
+        }
+        else if(product_list[_id].safranal_content >= 40 && product_list[_id].safranal_content <60)
+        {
+            product_list[_id].grade = "C";
+            product_list[_id].price = 60;
+        }
+        else if(product_list[_id].safranal_content >= 20 && product_list[_id].safranal_content <40)
+        {
+            product_list[_id].grade = "D";
+            product_list[_id].price = 40;
+        }
+        else
+        {
+            product_list[_id].grade = "E";
+            product_list[_id].price = 20;
+        }
+        product_list[_id].state = State.Graded; 
+    }
+    
+    function packing(uint _id) exist(_id) graded(_id) confirm_farmer(_id) public{
+        product_list[_id].state = State.Packed;
+    }
+    
+    function for_sale(uint _id) exist(_id) packed(_id) confirm_farmer(_id) public{
+        product_list[_id].state = State.For_Sale;
     }
 
 }
