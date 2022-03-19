@@ -10,12 +10,21 @@ contract SupplyChain{
 
     enum State{
         withFarmer,
+        withDistributor,
+        withRetailer,
+        withConsumer
     }
 
     struct Product{
         uint product_code;
         uint impurity;
         uint price;
-
+        address payable farmer;
+        address payable distributor;
+        address payable retailer;
+        address payable consumer;
+        address payable Current_owner;
+        uint state;
     }
+
 }
