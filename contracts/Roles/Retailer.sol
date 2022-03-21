@@ -16,7 +16,7 @@ contract Retailer{
         Roles.remove_member(retailers, _add);
     }
 
-    function isRetailer(address _add) internal view {
-        Roles.is_member(retailers, _add);
+    function isRetailer(address _add) internal view returns(bool){
+        return Roles.is_member(retailers, _add);
     }
 }

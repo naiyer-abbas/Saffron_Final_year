@@ -65,10 +65,21 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         _;
     }
 
+    modifier only_distributor(address _add)
+    {
+        require(isDistributor(_add), "Not authorized");
+        _;
+    }
+
      modifier forSale(uint _id){
         require(product_list[_id].state == State.For_Sale, "Not for sale");
         _;
     }
+    modifier paid_enough(uint _price) {
+        require(msg.value >= _price, "The amount is not sufficient to buy the product");
+        _;
+  }
+
 
     
 
@@ -127,7 +138,10 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         product_list[_id].state = State.For_Sale;
     }
 
-    function sell_to_distributor(uint _id) exist(_id) forSale(_id) confirm_farmer(_id) public{
+    function sell_to_distributor(uint _id) exist(_id) forSale(_id) only_distributor(msg.sender) paid_enough(product_list[_id].price) public payable{
+        product_list[_id].Current_owner.transfer(product_list[_id].price);
+        product_list[_id].Current_owner = payable(msg.sender);
+        product_list[_id].distributor = payable(msg.sender);
         product_list[_id].state = State.with_distributor;
     }
 

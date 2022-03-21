@@ -16,7 +16,7 @@ contract Distributor{
         Roles.remove_member(distributors, _add);
     }
 
-    function isDistributor(address _add) internal view {
-        Roles.is_member(distributors, _add);
+    function isDistributor(address _add) internal view returns(bool){
+        return Roles.is_member(distributors, _add);
     }
 }

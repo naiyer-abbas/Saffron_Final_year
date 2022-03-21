@@ -16,7 +16,7 @@ contract Consumer{
         Roles.remove_member(consumers, _add);
     }
 
-    function isConsumer(address _add) internal view {
-        Roles.is_member(consumers, _add);
+    function isConsumer(address _add) internal view returns(bool){
+        return Roles.is_member(consumers, _add);
     }
 }
