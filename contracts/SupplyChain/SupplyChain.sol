@@ -13,7 +13,10 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         Dried,
         Graded,
         Packed,
-        For_Sale
+        For_Sale,
+        with_distributor,
+        with_retailer,
+        with_consumer
     }
 
     struct Product{
@@ -61,6 +64,13 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         require(product_list[_id].farmer == msg.sender, "Not authorized");
         _;
     }
+
+     modifier forSale(uint _id){
+        require(product_list[_id].state == State.For_Sale, "Not for sale");
+        _;
+    }
+
+    
 
     function harvest_product(uint _id) public  {
         require(isFarmer(msg.sender));
@@ -116,5 +126,11 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
     function for_sale(uint _id) exist(_id) packed(_id) confirm_farmer(_id) public{
         product_list[_id].state = State.For_Sale;
     }
+
+    function sell_to_distributor(uint _id) exist(_id) forSale(_id) confirm_farmer(_id) public{
+        product_list[_id].state = State.with_distributor;
+    }
+
+
 
 }
