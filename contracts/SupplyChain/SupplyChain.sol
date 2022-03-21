@@ -89,11 +89,11 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
 
     modifier withDistributor(uint _id)
     {
-        require(product_list[_id].state = State.with_distributor, "Not authorized");
+        require(product_list[_id].state == State.with_distributor, "Not authorized");
         _;
     }
 
-    modifier only_consumer(uint _add)
+    modifier only_consumer(address _add)
     {
         require(isConsumer(_add), "Not authorized");
         _;
