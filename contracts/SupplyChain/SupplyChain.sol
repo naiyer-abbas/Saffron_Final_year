@@ -10,7 +10,7 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
 
     enum State{
         Harvested,
-        Dried,
+        Dried,   
         Graded,
         Packed,
         For_Sale,
@@ -99,9 +99,6 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         _;
     }
 
-
-    
-
     function harvest_product(uint _id) public  {
         require(isFarmer(msg.sender));
         Product memory product;
@@ -179,7 +176,5 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         product_list[_id].consumer = payable(msg.sender);
         product_list[_id].state = State.with_consumer;
     }
-
-
 
 }
