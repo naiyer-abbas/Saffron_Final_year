@@ -8,11 +8,11 @@ contract Retailer{
 
     Roles.Record private retailers;
 
-    function addRetailer(address _add) internal {
+    function addRetailer(address _add) public {
         Roles.add_member(retailers, _add);
     }
 
-    function removeRetailer(address _add) internal {
+    function removeRetailer(address _add) public {
         Roles.remove_member(retailers, _add);
     }
 

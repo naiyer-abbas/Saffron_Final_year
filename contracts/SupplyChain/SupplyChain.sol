@@ -99,6 +99,22 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         _;
     }
 
+    modifier canBuy(uint _id)
+    {
+        require(can_buy(_id), "Item is not FOR SALE");
+        _;
+    }
+
+    function can_buy(uint _id) internal view returns(bool)
+    {
+        if(product_list[_id].state == State.Packed || product_list[_id].state == State.with_distributor || product_list[_id].state == State.with_retailer)
+        {
+            return true;
+        }
+
+        return false; 
+    }
+
     function harvest_product(uint _id) public  {
         require(isFarmer(msg.sender));
         Product memory product;

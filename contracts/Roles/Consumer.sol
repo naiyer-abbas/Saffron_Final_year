@@ -8,11 +8,11 @@ contract Consumer{
 
     Roles.Record private consumers;
 
-    function addConsumer(address _add) internal {
+    function addConsumer(address _add) public {
         Roles.add_member(consumers, _add);
     }
 
-    function removeConsumer(address _add) internal {
+    function removeConsumer(address _add) public {
         Roles.remove_member(consumers, _add);
     }
 

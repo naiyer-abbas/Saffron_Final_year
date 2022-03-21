@@ -8,11 +8,11 @@ contract Distributor{
 
     Roles.Record private distributors;
 
-    function addDistributor(address _add) internal {
+    function addDistributor(address _add) public {
         Roles.add_member(distributors, _add);
     }
 
-    function removeDistributor(address _add) internal {
+    function removeDistributor(address _add) public {
         Roles.remove_member(distributors, _add);
     }
 
