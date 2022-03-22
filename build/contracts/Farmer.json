@@ -1,0 +1,1217 @@
+{
+  "contractName": "Farmer",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Roles/Farmer.sol\":\"Farmer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Roles/Farmer.sol\":{\"keccak256\":\"0x27e210f39f6b8f4985f2c636005f30d096f166bf90c74647d2f7a5b7afba0fe8\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://0793207d19251b59b9e9d53bdd3f4fcbcf07519bd485f5ba00c21a1e1dc09092\",\"dweb:/ipfs/QmZMyXaZHpEK9NGHUAhAoj68ePUnmRw9JwsMLbnVLk59kk\"]},\"project:/contracts/Roles/Roles.sol\":{\"keccak256\":\"0x6eefadbddf03e6f55971833c7c52312991d4bfc2091f2558d899bfff796e7b79\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://ed6bd8fb326ef7b074ed0ffec5ab980fd2d3fd10f67972fd9a62cbe63389d81e\",\"dweb:/ipfs/QmPKtkUk1Y3wzNzz8M2wpBRP3TNBSaQbt3GjAA4CEg5uiA\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220fd8d8d111fc9d502c66c723bfb794a29371f7972443cd032d2a887710c7bd4e064736f6c634300080a0033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220fd8d8d111fc9d502c66c723bfb794a29371f7972443cd032d2a887710c7bd4e064736f6c634300080a0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "97:422:3:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "97:422:3:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.7.0 <0.9.0;\r\n\r\nimport \"./Roles.sol\";\r\n\r\ncontract Farmer{\r\n    using Roles for Roles.Record;\r\n\r\n    Roles.Record private farmers;\r\n\r\n    function addFarmer(address _add) internal {\r\n        Roles.add_member(farmers, _add);\r\n    }\r\n\r\n    function removeFarmer(address _add) internal {\r\n        Roles.remove_member(farmers, _add);\r\n    }\r\n\r\n    function isFarmer(address _add) internal view returns (bool) {\r\n        return Roles.is_member(farmers, _add);\r\n    }\r\n}",
+  "sourcePath": "F:\\project\\Saffron_Final_year\\contracts\\Roles\\Farmer.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Roles/Farmer.sol",
+    "exportedSymbols": {
+      "Farmer": [
+        185
+      ],
+      "Roles": [
+        341
+      ]
+    },
+    "id": 186,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 136,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:31:3"
+      },
+      {
+        "absolutePath": "project:/contracts/Roles/Roles.sol",
+        "file": "./Roles.sol",
+        "id": 137,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 186,
+        "sourceUnit": 342,
+        "src": "72:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Farmer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 185,
+        "linearizedBaseContracts": [
+          185
+        ],
+        "name": "Farmer",
+        "nameLocation": "106:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 141,
+            "libraryName": {
+              "id": 138,
+              "name": "Roles",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 341,
+              "src": "125:5:3"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "119:29:3",
+            "typeName": {
+              "id": 140,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 139,
+                "name": "Roles.Record",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 243,
+                "src": "135:12:3"
+              },
+              "referencedDeclaration": 243,
+              "src": "135:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Record_$243_storage_ptr",
+                "typeString": "struct Roles.Record"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 144,
+            "mutability": "mutable",
+            "name": "farmers",
+            "nameLocation": "177:7:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 185,
+            "src": "156:28:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Record_$243_storage",
+              "typeString": "struct Roles.Record"
+            },
+            "typeName": {
+              "id": 143,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 142,
+                "name": "Roles.Record",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 243,
+                "src": "156:12:3"
+              },
+              "referencedDeclaration": 243,
+              "src": "156:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Record_$243_storage_ptr",
+                "typeString": "struct Roles.Record"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 156,
+              "nodeType": "Block",
+              "src": "235:50:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 152,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "263:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 153,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 146,
+                        "src": "272:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 149,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "246:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 151,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 305,
+                      "src": "246:16:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$__$",
+                        "typeString": "function (struct Roles.Record storage pointer,address)"
+                      }
+                    },
+                    "id": 154,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "246:31:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 155,
+                  "nodeType": "ExpressionStatement",
+                  "src": "246:31:3"
+                }
+              ]
+            },
+            "id": 157,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addFarmer",
+            "nameLocation": "202:9:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 146,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "220:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 157,
+                  "src": "212:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 145,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "212:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "211:14:3"
+            },
+            "returnParameters": {
+              "id": 148,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "235:0:3"
+            },
+            "scope": 185,
+            "src": "193:92:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 169,
+              "nodeType": "Block",
+              "src": "338:53:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 165,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "369:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 166,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 159,
+                        "src": "378:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 162,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "349:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 164,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 340,
+                      "src": "349:19:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$__$",
+                        "typeString": "function (struct Roles.Record storage pointer,address)"
+                      }
+                    },
+                    "id": 167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "349:34:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "349:34:3"
+                }
+              ]
+            },
+            "id": 170,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeFarmer",
+            "nameLocation": "302:12:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 160,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 159,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "323:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 170,
+                  "src": "315:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 158,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "314:14:3"
+            },
+            "returnParameters": {
+              "id": 161,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "338:0:3"
+            },
+            "scope": 185,
+            "src": "293:98:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 183,
+              "nodeType": "Block",
+              "src": "460:56:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 179,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "494:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 180,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 172,
+                        "src": "503:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 177,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "478:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 178,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "is_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 269,
+                      "src": "478:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (struct Roles.Record storage pointer,address) view returns (bool)"
+                      }
+                    },
+                    "id": 181,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "478:30:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 176,
+                  "id": 182,
+                  "nodeType": "Return",
+                  "src": "471:37:3"
+                }
+              ]
+            },
+            "id": 184,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isFarmer",
+            "nameLocation": "408:8:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 173,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 172,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "425:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 184,
+                  "src": "417:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 171,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "417:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "416:14:3"
+            },
+            "returnParameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 175,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 184,
+                  "src": "454:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 174,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "454:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "453:6:3"
+            },
+            "scope": 185,
+            "src": "399:117:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 186,
+        "src": "97:422:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:482:3"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/Roles/Farmer.sol",
+    "exportedSymbols": {
+      "Farmer": [
+        185
+      ],
+      "Roles": [
+        341
+      ]
+    },
+    "id": 186,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 136,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:31:3"
+      },
+      {
+        "absolutePath": "project:/contracts/Roles/Roles.sol",
+        "file": "./Roles.sol",
+        "id": 137,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 186,
+        "sourceUnit": 342,
+        "src": "72:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Farmer",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 185,
+        "linearizedBaseContracts": [
+          185
+        ],
+        "name": "Farmer",
+        "nameLocation": "106:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 141,
+            "libraryName": {
+              "id": 138,
+              "name": "Roles",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 341,
+              "src": "125:5:3"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "119:29:3",
+            "typeName": {
+              "id": 140,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 139,
+                "name": "Roles.Record",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 243,
+                "src": "135:12:3"
+              },
+              "referencedDeclaration": 243,
+              "src": "135:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Record_$243_storage_ptr",
+                "typeString": "struct Roles.Record"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 144,
+            "mutability": "mutable",
+            "name": "farmers",
+            "nameLocation": "177:7:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 185,
+            "src": "156:28:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Record_$243_storage",
+              "typeString": "struct Roles.Record"
+            },
+            "typeName": {
+              "id": 143,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 142,
+                "name": "Roles.Record",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 243,
+                "src": "156:12:3"
+              },
+              "referencedDeclaration": 243,
+              "src": "156:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Record_$243_storage_ptr",
+                "typeString": "struct Roles.Record"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 156,
+              "nodeType": "Block",
+              "src": "235:50:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 152,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "263:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 153,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 146,
+                        "src": "272:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 149,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "246:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 151,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 305,
+                      "src": "246:16:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$__$",
+                        "typeString": "function (struct Roles.Record storage pointer,address)"
+                      }
+                    },
+                    "id": 154,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "246:31:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 155,
+                  "nodeType": "ExpressionStatement",
+                  "src": "246:31:3"
+                }
+              ]
+            },
+            "id": 157,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addFarmer",
+            "nameLocation": "202:9:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 146,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "220:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 157,
+                  "src": "212:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 145,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "212:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "211:14:3"
+            },
+            "returnParameters": {
+              "id": 148,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "235:0:3"
+            },
+            "scope": 185,
+            "src": "193:92:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 169,
+              "nodeType": "Block",
+              "src": "338:53:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 165,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "369:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 166,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 159,
+                        "src": "378:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 162,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "349:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 164,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 340,
+                      "src": "349:19:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$__$",
+                        "typeString": "function (struct Roles.Record storage pointer,address)"
+                      }
+                    },
+                    "id": 167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "349:34:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "349:34:3"
+                }
+              ]
+            },
+            "id": 170,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeFarmer",
+            "nameLocation": "302:12:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 160,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 159,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "323:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 170,
+                  "src": "315:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 158,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "314:14:3"
+            },
+            "returnParameters": {
+              "id": 161,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "338:0:3"
+            },
+            "scope": 185,
+            "src": "293:98:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 183,
+              "nodeType": "Block",
+              "src": "460:56:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 179,
+                        "name": "farmers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 144,
+                        "src": "494:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        }
+                      },
+                      {
+                        "id": 180,
+                        "name": "_add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 172,
+                        "src": "503:4:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_Record_$243_storage",
+                          "typeString": "struct Roles.Record storage ref"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 177,
+                        "name": "Roles",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 341,
+                        "src": "478:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_Roles_$341_$",
+                          "typeString": "type(library Roles)"
+                        }
+                      },
+                      "id": 178,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "is_member",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 269,
+                      "src": "478:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_Record_$243_storage_ptr_$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (struct Roles.Record storage pointer,address) view returns (bool)"
+                      }
+                    },
+                    "id": 181,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "478:30:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 176,
+                  "id": 182,
+                  "nodeType": "Return",
+                  "src": "471:37:3"
+                }
+              ]
+            },
+            "id": 184,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isFarmer",
+            "nameLocation": "408:8:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 173,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 172,
+                  "mutability": "mutable",
+                  "name": "_add",
+                  "nameLocation": "425:4:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 184,
+                  "src": "417:12:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 171,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "417:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "416:14:3"
+            },
+            "returnParameters": {
+              "id": 176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 175,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 184,
+                  "src": "454:4:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 174,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "454:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "453:6:3"
+            },
+            "scope": 185,
+            "src": "399:117:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 186,
+        "src": "97:422:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:482:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.10+commit.fc410830.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-03-21T11:44:01.227Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
