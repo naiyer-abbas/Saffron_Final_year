@@ -7,29 +7,23 @@ contract verify_random
     uint public random_num;
     struct person{
         uint id;
-        uint safranal_cutoff;
+        uint rep_score;
     }
 
-    person [100] private people;
+    person [] private v_members;
 
-    constructor(){
-        for(uint i = 0; i <= 79; i++)
-        {
-            people[i].safranal_cutoff = generate_good_person(); 
-        }
+    uint global_id = 0;
 
-        for(uint i = 80; i <= 100; i++)
-        {
-            people[i].safranal_cutoff = generate_bad_person(); 
-        }   
-    }
+    mapping (address => bool) private verifiers;
 
-    function generate_good_person() public returns (uint) {
-        return generate_random(40, 25);
-    }
 
-    function generate_bad_person() public returns (uint){
-        return generate_random(5, 25);
+    function ver_register() public {
+        require(verifiers[msg.sender] == false);
+        verifiers[msg.sender] = true;
+        person memory p;
+        p.id = global_id ++;
+        p.rep_score = 1;
+        v_members.push(p);
     }
 
     function generate_random(uint num_max, uint num_min) public returns (uint)
@@ -41,17 +35,15 @@ contract verify_random
         return (((random_num - 0) * new_range) / old_range) + num_min;
     }
 
-    function verification(uint safranal_content) public returns (bool)
+    function select_5_people() internal
     {
-        uint cnt_true;
-        for(uint i = 0; i < 5; i++)
+        require(v_members.length >= 5);
+        uint [] storage pred_arr;
+        for(uint i = 0; i < v_members.length; i++)
         {
-            uint track = generate_random(0, 99);
-            if(safranal_content >= people[track].safranal_cutoff)
-            {
-                cnt_true ++;
-            }
+            
         }
-        return (cnt_true >= 3);
     }
+
+    
 }
