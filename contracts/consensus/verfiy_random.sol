@@ -12,19 +12,42 @@ contract verify_random
 
     person [] private v_members;
     uint [] pred_arr;
-    uint [] Hsh;
+    uint [] selected_5_verifiers;
+    mapping(uint => bool) Hsh;
     uint global_id = 0;
 
     mapping (address => bool) private verifiers;
     mapping (uint => person) private registered;
 
-    function ver_register() public {
+    function reset() public
+    {
+        for(uint i=0;i<v_members.length;i++)
+        {
+            Hsh[v_members[i].id] = true; 
+        }
+        uint len = pred_arr.length;
+        while(len != 0)
+        {
+            pred_arr.pop();
+            len--;
+        }
+        len = selected_5_verifiers.length;
+        while(len != 0)
+        {
+            selected_5_verifiers.pop();
+            len--;
+        }
+    }
+
+    function ver_register() public 
+    {
         require(verifiers[msg.sender] == false);
         verifiers[msg.sender] = true;
         person memory p;
         p.id = global_id ++;
         p.rep_score = 1;
         registered[p.id] = p;
+        Hsh[p.id] = true;
         v_members.push(p);
     }
 
@@ -36,33 +59,46 @@ contract verify_random
         uint new_range = num_max - num_min;
         return (((random_num - 0) * new_range) / old_range) + num_min;
     }
+    function clear_pred_arr() internal 
+    {
+        uint len = pred_arr.length;
+        while(len != 0)
+        {
+            pred_arr.pop();
+            len--;
+        }
+    }
     function fill_pred_arr () internal returns(uint)
     {
         uint track;
         for(uint i = 0; i < v_members.length; i++)
         {
-            track = v_members[i].rep_score;
-            for(uint j = 0; j < track ; j++)
+            if(Hsh[v_members[i].id] == true)
             {
-                pred_arr.push(v_members[i].id);
+                track = v_members[i].rep_score;
+                for(uint j = 0; j < track ; j++)
+                {
+                    pred_arr.push(v_members[i].id);
+                }
+            }
+            else
+            {
+                continue;
             }
         }
         uint ran = generate_random(pred_arr.length-1, 0);
+        Hsh[pred_arr[ran]] = false;
         return pred_arr[ran];
     }
+    
     function select_5_people() internal
     {
         require(v_members.length >= 5);
         uint T = 5;
-        for(uint i = 0; i < v_members.length; i++)
-        {
-            Hsh[i] = 0;
-        }
         while(T != 0)
         {
-
+            selected_5_verifiers.push(fill_pred_arr());
+            clear_pred_arr();
         }
-    }
-
-    
+    }  
 }
