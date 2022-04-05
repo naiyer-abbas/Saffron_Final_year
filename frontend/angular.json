@@ -26,11 +26,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": ["E:/Projects_Haseeb/Saffron_Final_year/frontend/node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles": ["./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": ["E:/Projects_Haseeb/Saffron_Final_year/frontend/node_modules/bootstrap/dist/js/bootstrap.js", 
-              "E:/Projects_Haseeb/Saffron_Final_year/frontend/node_modules/jquery/dist/jquery.js"]
+            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.js", 
+              "./node_modules/jquery/dist/jquery.js"]
           },
           "configurations": {
             "production": {
