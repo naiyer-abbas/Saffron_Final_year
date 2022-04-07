@@ -1,0 +1,12 @@
+<form #myForm="ngForm">
+    <div class="mb-4">
+        <label for="name" class="form-label"> <h6>Full Name</h6></label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="commonService.selectedUser.name" class="form-control" id="name">
+    </div>
+    <div class="mb-4">
+        <label for="address" class="form-label"> <h6>Address</h6></label>
+        <input type="text" name="address" #address="ngModel" [(ngModel)]="commonService.selectedUser.address" class="form-control" id="address">
+    </div>
+    
+    <button type="submit" class="btn btn-success">Signup</button>
+</form>

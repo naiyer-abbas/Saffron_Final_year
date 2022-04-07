@@ -1,0 +1,41 @@
+<form #myForm="ngForm">
+    <div class="mb-4">
+        <input type="hidden" name="_id" #_id="ngModel"  [(ngModel)]="costEstimationService.curr_order._id" class="form-control" aria-describedby="emailHelp">
+        <label for="pickup" class="form-label">
+            <h6>Pickup Address</h6>
+        </label>
+        <input type="text" name="pickup" #pickupAddress="ngModel"  [(ngModel)]="costEstimationService.curr_order.pickupAddress" class="form-control" id="pickup">
+    </div>
+    <div class="mb-4">
+        <label for="delivery" class="form-label">
+            <h6>Delivery Address</h6>
+        </label>
+        <input type="text" name="delivery" #deliveryAddress="ngModel"  [(ngModel)]="costEstimationService.curr_order.deliveryAddress" class="form-control" id="delivery">
+    </div>
+    <div class="mb-4">
+        <label for="deliver_to" class="form-label">
+            <h6>Deliver to (Name)</h6>
+        </label>
+        <input type="text" name="deliver_to" #deliverTo="ngModel"  [(ngModel)]="costEstimationService.curr_order.deliverTo" class="form-control" id="deliver_to">
+    </div>
+    <div class="mb-4">
+        <label for="weight"  class="form-label">
+            <h6>Package weight (in kgs)</h6>
+        </label>
+        <input type="text" name="weight" #weight="ngModel"  [(ngModel)]="costEstimationService.curr_order.weight" class="form-control" id="weight">
+    </div>
+    <div class="mb-4">
+        <label for="width" class="form-label">
+            <h6>Package width (in meters)</h6>
+        </label>
+        <input type="text" name="width" #width="ngModel"  [(ngModel)]="costEstimationService.curr_order.width" class="form-control" id="width">
+    </div>
+    <div class="mb-4">
+        <label for="height" class="form-label">
+            <h6>Package height (in meters)</h6>
+        </label>
+        <input type="text" name="height" #height="ngModel"  [(ngModel)]="costEstimationService.curr_order.height" class="form-control" id="height">
+    </div>
+
+    <button type="submit" (click)="estimate_cost(myForm)" class="btn btn-success">Estimate Cost and proceed</button>
+</form>

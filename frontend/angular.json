@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "package_delivery_system": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/package_delivery_system",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -26,11 +26,13 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": ["./node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.js", 
-              "./node_modules/jquery/dist/jquery.js"]
+            "scripts": ["node_modules/jquery/dist/jquery.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js"]
           },
           "configurations": {
             "production": {
@@ -69,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "frontend:build:production"
+              "browserTarget": "package_delivery_system:build:production"
             },
             "development": {
-              "browserTarget": "frontend:build:development"
+              "browserTarget": "package_delivery_system:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "package_delivery_system:build"
           }
         },
         "test": {
@@ -103,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "frontend"
+  "defaultProject": "package_delivery_system"
 }

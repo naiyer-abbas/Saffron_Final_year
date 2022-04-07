@@ -1,0 +1,9 @@
+<h1 class="text-dark">Order Details </h1>
+<h2>From: {{this.costEstimationService.curr_order.pickupAddress}}</h2>
+<h2>To: {{this.costEstimationService.curr_order.deliveryAddress}}</h2>
+<h2>Item Weight (in kgs): {{this.costEstimationService.curr_order.weight}} </h2>
+<h2>Item Height (in meters): {{this.costEstimationService.curr_order.height}}</h2>
+<h2>Item Width (in meters): {{this.costEstimationService.curr_order.width}}</h2>
+<h2>Estimated Cost (INR): {{this.costEstimationService.curr_order.cost}}</h2>
+<button (click)="placeOrder()" class="btn-lg btn-success mx-2 my-3">Place Order</button>
+<button (click)="discardOrder()" class="btn-lg btn-danger mx-2 my-3">Discard Order</button>

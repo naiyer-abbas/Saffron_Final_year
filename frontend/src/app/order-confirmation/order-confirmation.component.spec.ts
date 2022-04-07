@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeWithoutLoginComponent } from './home-without-login.component';
+import { OrderConfirmationComponent } from './order-confirmation.component';
 
-describe('HomeWithoutLoginComponent', () => {
-  let component: HomeWithoutLoginComponent;
-  let fixture: ComponentFixture<HomeWithoutLoginComponent>;
+describe('OrderConfirmationComponent', () => {
+  let component: OrderConfirmationComponent;
+  let fixture: ComponentFixture<OrderConfirmationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeWithoutLoginComponent ]
+      declarations: [ OrderConfirmationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeWithoutLoginComponent);
+    fixture = TestBed.createComponent(OrderConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
