@@ -17,6 +17,7 @@ import { OrderScheduleComponent } from './order-schedule/order-schedule.componen
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { CostEstimationService } from './cost-estimation.service';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CostEstimationService } from './cost-estimation.service';
     DashboardComponent,
     OrderScheduleComponent,
     OrderConfirmationComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
