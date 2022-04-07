@@ -18,6 +18,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { CostEstimationService } from './cost-estimation.service';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ShopComponent } from './shop/shop.component';
+import { TrackAnAssetComponent } from './track-an-asset/track-an-asset.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     OrderScheduleComponent,
     OrderConfirmationComponent,
     MyOrdersComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ShopComponent,
+    TrackAnAssetComponent
   ],
   imports: [
     BrowserModule,
