@@ -20,4 +20,8 @@ export class DashboardComponent implements OnInit {
   show_my_orders(){
     this.router.navigate(['/my-orders']);
   }
+
+  go_to_shop(){
+    this.router.navigate(['/shop']);
+  }
 }

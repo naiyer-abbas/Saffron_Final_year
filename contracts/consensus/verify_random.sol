@@ -8,6 +8,7 @@ contract verify_random
     struct person{
         uint id;
         uint rep_score;
+        bool verdict;
     }
 
     person [] private v_members;
@@ -18,6 +19,14 @@ contract verify_random
 
     mapping (address => bool) private verifiers;
     mapping (uint => person) private registered;
+    mapping (address => person) private add_to_person;
+
+    function verify() internal returns(bool){
+        reset();
+        select_5_people();
+        // send notification to 5 verifiers and update the verdict of the particular person.
+        return update_score();
+    }
 
     function reset() public
     {
@@ -49,6 +58,7 @@ contract verify_random
         registered[p.id] = p;
         Hsh[p.id] = true;
         v_members.push(p);
+        add_to_person[msg.sender] = p;
     }
 
     function generate_random(uint num_max, uint num_min) public returns (uint)
@@ -100,5 +110,55 @@ contract verify_random
             selected_5_verifiers.push(fill_pred_arr());
             clear_pred_arr();
         }
+    }
+
+    function choose_final_verdict() internal view returns(bool)
+    {
+        require(selected_5_verifiers.length >= 5);
+        uint yes;
+        uint no;
+
+        for(uint i = 0; i < selected_5_verifiers.length; i++)
+        {
+            if(registered[selected_5_verifiers[i]].verdict == true)
+            {
+                yes ++;
+            }
+
+            else
+            {
+                no ++;
+            }
+        }
+
+        return yes >= no;
+    }
+
+    function approve() internal
+    {
+        add_to_person[msg.sender].verdict = true;
+    }
+
+    function reject() internal
+    {
+        add_to_person[msg.sender].verdict = false;
+    } 
+
+    function update_score() internal returns(bool)
+    {
+        bool review = choose_final_verdict();
+        for(uint i = 0; i < selected_5_verifiers.length; i ++)
+        {
+            if(review == registered[selected_5_verifiers[i]].verdict)
+            {
+                registered[selected_5_verifiers[i]].rep_score ++;
+            }
+
+            else
+            {
+                registered[selected_5_verifiers[i]].rep_score --;
+            }
+        }
+        return review;
     }  
 }

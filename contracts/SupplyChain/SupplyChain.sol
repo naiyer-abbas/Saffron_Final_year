@@ -5,8 +5,9 @@ import '../Roles/Farmer.sol';
 import '../Roles/Distributor.sol';
 import '../Roles/Retailer.sol';
 import '../Roles/Consumer.sol';
+import '../consensus/verify_random.sol';
 
-contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
+contract SupplyChain is Farmer, Distributor, Retailer, Consumer, verify_random{
 
     enum State{
         Harvested,
@@ -133,32 +134,8 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
         product_list[_id].state = State.Dried;
     }
 
-    function grading(uint _id) exist(_id) dried(_id) confirm_farmer(_id) public{
-        if(product_list[_id].safranal_content >= 80 && product_list[_id].safranal_content <=100)
-        {
-            product_list[_id].grade = "A";
-            product_list[_id].price = 100;
-        }
-        else if(product_list[_id].safranal_content >= 60 && product_list[_id].safranal_content <80)
-        {
-            product_list[_id].grade = "B";
-            product_list[_id].price = 80;
-        }
-        else if(product_list[_id].safranal_content >= 40 && product_list[_id].safranal_content <60)
-        {
-            product_list[_id].grade = "C";
-            product_list[_id].price = 60;
-        }
-        else if(product_list[_id].safranal_content >= 20 && product_list[_id].safranal_content <40)
-        {
-            product_list[_id].grade = "D";
-            product_list[_id].price = 40;
-        }
-        else
-        {
-            product_list[_id].grade = "E";
-            product_list[_id].price = 20;
-        }
+    function grading(uint _id, string memory _grade) exist(_id) dried(_id) confirm_farmer(_id) public{
+        product_list[_id].grade = _grade;
         product_list[_id].state = State.Graded; 
     }
     
@@ -171,6 +148,8 @@ contract SupplyChain is Farmer, Distributor, Retailer, Consumer{
     }
 
     function sell_to_distributor(uint _id) exist(_id) forSale(_id) only_distributor(msg.sender) paid_enough(product_list[_id].price) public payable{
+        bool confirmation = verify();
+        if(confirmation == false)
         product_list[_id].Current_owner.transfer(product_list[_id].price);
         product_list[_id].Current_owner = payable(msg.sender);
         product_list[_id].distributor = payable(msg.sender);
