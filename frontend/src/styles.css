@@ -7,3 +7,6 @@
     background: url('https://static.vecteezy.com/system/resources/previews/002/058/800/large_2x/abstract-holographic-background-in-pastel-neon-color-design-blurred-wallpaper-illustration-for-your-modern-style-trends-80s-90s-background-for-creative-design-vector.jpg');
      overflow: auto; 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

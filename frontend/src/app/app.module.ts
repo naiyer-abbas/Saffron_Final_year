@@ -20,6 +20,7 @@ import { CostEstimationService } from './cost-estimation.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ShopComponent } from './shop/shop.component';
 import { TrackAnAssetComponent } from './track-an-asset/track-an-asset.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TrackAnAssetComponent } from './track-an-asset/track-an-asset.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [CommonService, CostEstimationService],
   bootstrap: [AppComponent]
